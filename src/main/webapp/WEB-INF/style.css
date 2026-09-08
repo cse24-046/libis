@@ -1,0 +1,547 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+}
+
+
+/* =====================================================
+   LOGIN PAGE
+   ===================================================== */
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #f5f6f8;
+
+    padding: 30px;
+}
+
+
+.login-card {
+    width: 430px;
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 14px;
+
+    box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* BRAND */
+
+.brand {
+    text-align: center;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    color: #222;
+}
+
+
+.brand-subtitle {
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+
+    margin-top: 5px;
+
+    margin-bottom: 35px;
+}
+
+
+/* LOGIN HEADING */
+
+.login-heading {
+    font-size: 25px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+
+.login-description {
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 28px;
+}
+
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+
+.form-group input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d5d7da;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+
+.form-group input:focus {
+    border-color: #222;
+}
+
+
+/* LOGIN BUTTON */
+
+.login-button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.login-button:hover {
+    background: #444;
+}
+
+
+/* ERROR */
+
+.error-message {
+    background: #fff0f0;
+
+    border: 1px solid #f1c5c5;
+
+    color: #b42318;
+
+    padding: 12px;
+
+    border-radius: 7px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* LOGIN FOOTER */
+
+.login-footer {
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-size: 12px;
+
+    color: #999;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.header {
+    height: 75px;
+
+    background: #222;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 55px;
+}
+
+
+.header-brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.header-logo {
+    font-size: 25px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+.header-divider {
+    color: #777;
+}
+
+
+.header-title {
+    color: #ccc;
+
+    font-size: 14px;
+}
+
+
+.header-user {
+    font-size: 14px;
+
+    color: #ddd;
+}
+
+
+.header-user strong {
+    color: white;
+}
+
+
+/* =====================================================
+   CATALOGUE
+   ===================================================== */
+
+.catalogue-container {
+    max-width: 1250px;
+
+    margin: 45px auto;
+
+    padding: 0 30px;
+}
+
+
+/* INTRO */
+
+.catalogue-intro {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+
+.catalogue-intro h1 {
+    margin: 0 0 8px;
+
+    font-size: 30px;
+}
+
+
+.catalogue-intro p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* BOOK COUNT */
+
+.book-count {
+    background: white;
+
+    padding: 15px 22px;
+
+    border-radius: 9px;
+
+    box-shadow:
+            0 3px 12px rgba(0,0,0,0.06);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.count-number {
+    font-size: 24px;
+
+    font-weight: 800;
+}
+
+
+.count-label {
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   TABLE
+   ===================================================== */
+
+.table-container {
+    background: white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+            0 5px 20px rgba(0,0,0,0.07);
+}
+
+
+.book-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.book-table thead {
+    background: #222;
+
+    color: white;
+}
+
+
+.book-table th {
+    padding: 16px;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+
+.book-table td {
+    padding: 17px 16px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 14px;
+}
+
+
+.book-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.book-table tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/* BOOK NUMBER */
+
+.book-number {
+    color: #999;
+
+    font-weight: 600;
+
+    width: 45px;
+}
+
+
+/* TITLE */
+
+.book-title {
+    font-weight: 700;
+
+    color: #222;
+}
+
+
+/* GENRE */
+
+.genre {
+    display: inline-block;
+
+    background: #f0f1f3;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    color: #444;
+}
+
+
+/* STATUS */
+
+.status {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.available {
+    background: #eaf7ee;
+
+    color: #217a3a;
+}
+
+
+.borrowed {
+    background: #fff4e5;
+
+    color: #a35b00;
+}
+
+
+/* =====================================================
+   ACTION LINKS
+   ===================================================== */
+
+.action-link {
+    color: #222;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-right: 10px;
+}
+
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   FOOTER NOTE
+   ===================================================== */
+
+.catalogue-note {
+    margin-top: 18px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 850px) {
+
+    .header {
+        padding: 0 25px;
+    }
+
+    .header-title,
+    .header-divider {
+        display: none;
+    }
+
+    .catalogue-intro {
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .book-table {
+        min-width: 900px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .login-card {
+        width: 100%;
+
+        padding: 30px;
+    }
+
+    .header-user {
+        display: none;
+    }
+
+    .catalogue-container {
+        padding: 0 15px;
+    }
+}
