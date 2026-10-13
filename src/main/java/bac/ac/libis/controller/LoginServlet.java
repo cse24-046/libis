@@ -35,14 +35,14 @@ public class LoginServlet extends HttpServlet {
         // this one branches logic based on success or failure (i think)
         if (authenticatedMember != null) {
 
-            // save member identity
+            // saves member identity
             HttpSession session = request.getSession();
             session.setAttribute("loggedMember", authenticatedMember);
 
             List<Book> books = DataProvider.getBooks();
             session.setAttribute("bookList", books);
 
-            request.getRequestDispatcher("/welcome.jsp").forward(request, response);
+            response.sendRedirect("welcome.jsp");
 
         } else {
             // reject and redirect back to login
