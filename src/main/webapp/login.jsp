@@ -10,14 +10,13 @@
 <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
   <h2 class="text-center mb-4 text-primary">LIBIS Login</h2>
 
-  <!-- displays error message if login fails -->
   <% if (request.getAttribute("errorMessage") != null) { %>
   <div class="alert alert-danger py-2" role="alert">
     <%= request.getAttribute("errorMessage") %>
   </div>
   <% } %>
 
-  <form action="loginProcess" method="post">
+  <form action="${pageContext.request.contextPath}/login" method="post">
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input type="email" class="form-control" id="email" name="email" required>

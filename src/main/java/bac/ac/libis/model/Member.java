@@ -18,7 +18,6 @@ public class Member {
         this.password = password;
     }
 
-    // Getters and Setters
     public int getMemberId() { return memberId; }
     public void setMemberId(int memberId) { this.memberId = memberId; }
 

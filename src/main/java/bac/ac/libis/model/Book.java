@@ -20,7 +20,6 @@ public class Book {
         this.available = available;
     }
 
-    // Getters and Setters
     public int getBookId() { return bookId; }
     public void setBookId(int bookId) { this.bookId = bookId; }
 

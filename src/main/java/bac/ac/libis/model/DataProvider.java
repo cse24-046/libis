@@ -8,14 +8,12 @@ public class DataProvider {
     private static List<Book> books = new ArrayList<>();
 
     static {
-        // member list
         members.add(new Member(1, "Seneo", "Molatlhwa", "seneo@gmail.com", "pass123"));
         members.add(new Member(2, "Bob", "Johnson", "bob@gmail.com", "pass456"));
         members.add(new Member(3, "Fally", "Ipupa", "fipupa@bac.com", "pass789"));
         members.add(new Member(4, "Raymond", "Reddington", "rayred@bac.com", "passabc"));
         members.add(new Member(5, "Monyana", "Kedukaetswe", "biancak@bac.com", "passdef"));
 
-        // book list
         books.add(new Book(1, "Java Programming", "P. Sebalatlheng", "Technology", "An introductory guide to Java.", true));
         books.add(new Book(2, "Clean Code", "R. Martin", "Technology", "A handbook of agile software craftsmanship.", true));
         books.add(new Book(3, "The Hobbit", "J.R.R. Tolkien", "Fantasy", "A fantasy novel about a journey.", false));
