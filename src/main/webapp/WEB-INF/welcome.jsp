@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  response.setHeader("Pragma", "no-cache");
+  response.setDateHeader("Expires", 0);
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +21,7 @@
         <input type="text" class="form-control form-control-sm" name="searchTerm" value="${param.searchTerm}" placeholder="Search">
         <button type="submit" class="btn btn-outline-light btn-sm">Search</button>
       </form>
-      <a href="${pageContext.request.contextPath}/logout.jsp" class="btn btn-outline-light btn-sm">Logout</a>
+      <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-light btn-sm">Logout</a> <!-- because logout.sp was removed-->
     </div>
   </div>
 </nav>
