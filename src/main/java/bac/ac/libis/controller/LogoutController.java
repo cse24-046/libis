@@ -11,12 +11,15 @@ import java.io.IOException;
 @WebServlet("/logout")
 public class LogoutController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.logout();
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate();                      // not sure but i think it destroys the session
+            session.invalidate();
         }
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+        response.sendRedirect(request.getContextPath() + "/catalogue");
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class MemberDao {
 
     private static final String SELECT =
-            "SELECT member_id, first_name, last_name, email, password FROM members";
+            "SELECT member_id, first_name, last_name, email, password, role FROM members";
 
     // read!
 
@@ -48,13 +48,14 @@ public class MemberDao {
     // write
 
     public int create(Member m) throws SQLException {
-        String sql = "INSERT INTO members (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO members (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, m.getFirstName());
             ps.setString(2, m.getLastName());
             ps.setString(3, m.getEmail());
             ps.setString(4, m.getPassword());
+            ps.setString(5, m.getRole() == null ? "member" : m.getRole());
             ps.executeUpdate();
 
 
@@ -69,9 +70,13 @@ public class MemberDao {
 
     /** returns true if a row was changed */
     public boolean update(Member m) throws SQLException {
-        String sql = "UPDATE members SET first_name = ?, last_name = ?, email = ?, password = ? WHERE member_id = ?";
-        return execute(sql, m.getFirstName(), m.getLastName(), m.getEmail(), m.getPassword(),
-                m.getMemberId()) > 0;
+        String sql = m.getPassword() == null || m.getPassword().isBlank()
+                ? "UPDATE members SET first_name = ?, last_name = ?, email = ?, role = ? WHERE member_id = ?"
+                : "UPDATE members SET first_name = ?, last_name = ?, email = ?, password = ?, role = ? WHERE member_id = ?";
+        if (m.getPassword() == null || m.getPassword().isBlank()) {
+            return execute(sql, m.getFirstName(), m.getLastName(), m.getEmail(), m.getRole(), m.getMemberId()) > 0;
+        }
+        return execute(sql, m.getFirstName(), m.getLastName(), m.getEmail(), m.getPassword(), m.getRole(), m.getMemberId()) > 0;
     }
 
     /** returns true if a member was deleted */
@@ -111,11 +116,13 @@ public class MemberDao {
     }
 
     private Member mapRow(ResultSet rs) throws SQLException {
-        return new Member(
+        Member member = new Member(
                 rs.getInt("member_id"),
                 rs.getString("first_name"),
                 rs.getString("last_name"),
                 rs.getString("email"),
                 rs.getString("password"));
+        member.setRole(rs.getString("role"));
+        return member;
     }
 }

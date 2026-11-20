@@ -24,7 +24,6 @@ public class BookDao {
         return query(SELECT + " ORDER BY b.book_id");
     }
 
-    /** the book id is also the book's identifying number. is it the same as isbn though?? (ask sir) */
     public Book findById(int bookId) throws SQLException {
         return first(query(SELECT + " WHERE b.book_id = ?", bookId));
     }
@@ -102,12 +101,13 @@ public class BookDao {
     }
 
     private Book mapRow(ResultSet rs) throws SQLException {
-        return new Book(
+        Book book = new Book(
                 rs.getInt("book_id"),
                 rs.getString("title"),
                 rs.getString("author"),
                 rs.getString("genre"),
                 rs.getString("synopsis"),
                 rs.getBoolean("available"));
+        return book;
     }
 }

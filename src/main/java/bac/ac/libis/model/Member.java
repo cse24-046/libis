@@ -6,6 +6,7 @@ public class Member {
     private String lastName;
     private String email;
     private String password;
+    private String role;
 
     public Member() {
     }
@@ -34,4 +35,9 @@ public class Member {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public String getFullNameText() { return getFullName(); }
+
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 }

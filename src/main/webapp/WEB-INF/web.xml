@@ -13,4 +13,61 @@
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+
+    <security-role>
+        <role-name>member</role-name>
+    </security-role>
+    <security-role>
+        <role-name>librarian</role-name>
+    </security-role>
+
+    <security-constraint>
+        <display-name>Open catalogue</display-name>
+        <web-resource-collection>
+            <web-resource-name>Catalogue</web-resource-name>
+            <url-pattern>/catalogue</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>member</role-name>
+            <role-name>librarian</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>Member services</display-name>
+        <web-resource-collection>
+            <web-resource-name>Borrowing and loans</web-resource-name>
+            <url-pattern>/member/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>member</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>Librarian services</display-name>
+        <web-resource-collection>
+            <web-resource-name>Member and book management</web-resource-name>
+            <url-pattern>/librarian/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>librarian</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+    </session-config>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>LIBIS</realm-name>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/login.jsp?error=1</form-error-page>
+        </form-login-config>
+    </login-config>
 </web-app>

@@ -19,7 +19,7 @@ public class LoanDao {
 
     /** records a new open loan and returns its id */
     public int create(int memberId, int bookId) throws SQLException {
-        String sql = "INSERT INTO loans (member_id, book_id) VALUES (?, ?)";
+        String sql = "INSERT INTO loans (member_id, book_id, borrowed_on) VALUES (?, ?, CURDATE())";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, memberId);
@@ -32,12 +32,25 @@ public class LoanDao {
     }
 
     /** this one sets returned_on to now returns false if the loan doesn't exist (or was already returned) */
-    public boolean markReturned(int loanId) throws SQLException {
-        String sql = "UPDATE loans SET returned_on = NOW() WHERE loan_id = ? AND returned_on IS NULL";
+    public boolean isOpenLoanForMember(int loanId, int memberId) throws SQLException {
+        String sql = "SELECT 1 FROM loans WHERE loan_id = ? AND member_id = ? AND returned_on IS NULL LIMIT 1";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, loanId);
+            ps.setInt(2, memberId);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+
+    public boolean markReturned(int loanId, int memberId) throws SQLException {
+        String sql = "UPDATE loans SET returned_on = NOW() WHERE loan_id = ? AND member_id = ? AND returned_on IS NULL";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, loanId);
+            ps.setInt(2, memberId);
             return ps.executeUpdate() > 0;
         }
     }

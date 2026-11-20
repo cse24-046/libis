@@ -1,0 +1,2 @@
+-- No schema migration is required. member_id identifies members,
+-- email is the username, and book_id identifies books.
